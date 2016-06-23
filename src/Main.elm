@@ -5,6 +5,7 @@ import Html.Events exposing ( onClick )
 
 -- component import example
 import Components.Hello exposing ( hello )
+import Components.HelloElmx exposing ( helloElmx )
 
 
 -- APP
@@ -41,6 +42,7 @@ view model =
         div [ class "jumbotron" ][
           img [ src "img/elm.jpg", style styles.img ] []                                    -- inline CSS (via var)
           , hello model                                                                     -- ext 'hello' component (takes 'model' as arg)
+          , helloElmx model
           , p [] [ text ( "Elm Webpack Starter" ) ]
           , button [ class "btn btn-primary btn-lg", onClick Increment ] [                  -- click handler
             span[ class "glyphicon glyphicon-star" ][]                                      -- glyphicon

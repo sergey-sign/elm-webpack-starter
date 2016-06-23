@@ -26,6 +26,18 @@ var commonConfig = {
 
   module: {
     noParse: /\.elm$/,
+    preLoaders: [
+      {
+        // Notice that the preloader actually reads .elm files looking for dependencies to be compiled from elmx
+        test: /\.elm$/,
+        loader: 'elmx-webpack-preloader',
+        include: [path.join(__dirname, "src")],
+        query: {
+          sourceDirectories: ['src'],
+          outputDirectory: 'tmp/elmx-src'
+        }
+      }
+    ],
     loaders: [
       {
         test: /\.(eot|ttf|woff|woff2|svg)$/,
@@ -67,7 +79,8 @@ if ( TARGET_ENV === 'development' ) {
         {
           test:    /\.elm$/,
           exclude: [/elm-stuff/, /node_modules/],
-          loader:  'elm-hot!elm-webpack?verbose=true&warn=true'
+          loader:  'elm-hot!elm-webpack?verbose=true&warn=true',
+          include: [path.join(__dirname, "src"), path.join(__dirname, "tmp/elmx-src")]
         },
         {
           test: /\.(css|scss)$/,
@@ -97,7 +110,8 @@ if ( TARGET_ENV === 'production' ) {
         {
           test:    /\.elm$/,
           exclude: [/elm-stuff/, /node_modules/],
-          loader:  'elm-webpack'
+          loader:  'elm-webpack',
+          include: [path.join(__dirname, "src"), path.join(__dirname, "tmp/elmx-src")]
         },
         {
           test: /\.(css|scss)$/,

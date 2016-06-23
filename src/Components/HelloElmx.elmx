@@ -1,0 +1,17 @@
+module Components.HelloElmx exposing (..)
+
+import Html exposing (..)
+import Html.Attributes exposing (..)
+
+import String
+
+-- helloElmx component
+helloElmx : Int -> Html a
+helloElmx model =
+  let
+    exclamation = "!" |> String.repeat model |> Html.text
+    xRed = <span style="color: red">x</span>
+  in
+    <div class="h2">
+      with Elm{xRed}{ exclamation }
+    </div>

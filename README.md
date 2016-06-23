@@ -4,6 +4,7 @@ A simple Webpack setup for writing [Elm](http://elm-lang.org/) apps:
 
 * Dev server with live reloading, HMR
 * Support for CSS/SCSS (with Autoprefixer), image assets
+* Support [elmx](https://github.com/pzavolinsky/elmx) like jsx
 * Bootstrap 3.3+ (Sass version)
 * Bundling and minification for deployment
 * Basic app scaffold, using `Html.App`
